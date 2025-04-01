@@ -1,0 +1,22 @@
+`timescale 1ns / 1ps
+
+
+module alu_tb();
+reg [7:0]a;reg [7:0]b;
+ reg [3:0]select;
+wire [7:0]result;
+wire carry_flag;
+wire overflow_flag;
+wire zero_flag;
+wire negative_flag;
+integer i;
+alu8 dut(a,b,select,result,carry_flag,overflow_flag,zero_flag,negative_flag);
+initial begin
+for(i=0;i<11;i=i+1)begin
+select=i;
+a=i;b=i+1;
+#10;
+end
+$finish;
+end
+endmodule
